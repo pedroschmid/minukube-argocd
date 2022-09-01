@@ -16,12 +16,8 @@ spec:
         forceString: true # ensures that value is treated as a string
       values: |
         podAnnotations:
-          prometheus.io/scrape: "true" # Ask Prometheus to scrape the
-          prometheus.io/port: "8100"   # Kong pods for metrics
-        # plugins:
-        #   configMaps:                # change this to 'secrets' if you created a secret
-        #   - name: kong-plugin-myheader
-        #     pluginName: myheader
+          prometheus.io/scrape: "true" # Ask Prometheus to scrape Kong pods for metrics
+          prometheus.io/port: "8100"
   destination:
     server: https://kubernetes.default.svc
     namespace: kong
