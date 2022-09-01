@@ -3,8 +3,8 @@ kind: Application
 metadata:
   name: kong
   namespace: argocd
-  annotations:
-    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+  # annotations:
+    # argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
 spec:
   project: default
   source:
@@ -26,7 +26,7 @@ spec:
   syncPolicy:
     syncOptions:
       - CreateNamespace=true
-      - ApplyOutOfSyncOnly=true
+      # - ApplyOutOfSyncOnly=true
     automated:
       prune: true
       allowEmpty: true
