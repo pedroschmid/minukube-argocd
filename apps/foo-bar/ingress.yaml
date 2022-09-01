@@ -5,6 +5,11 @@ metadata:
   name: foo-bar-ingress
   labels:
     app: foo-bar
+  annotations:
+    # konghq.com/host-aliases: "example.com,example.net"
+    # konghq.com/methods: "GET,POST"
+    # konghq.com/https-redirect-status-code: "301"
+    konghq.com/plugins: rate-limiting
 spec:
   ingressClassName: kong
   rules:
