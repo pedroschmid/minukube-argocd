@@ -13,7 +13,7 @@ spec:
         app: echo
     spec:
       containers:
-      - image: docker.io/pedroschmid2311/echo:latest
+      - image: pedroschmid2311/echo
         name: echo
         ports:
         - containerPort: 80
