@@ -50,7 +50,7 @@ jobs:
           git commit -am 'Change docker image tag to $DOCKER_IMAGE_TAG'
 
       - name: Push
-        uses: ad-m/github-push-actions@master
+        uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: ${{ github.ref }}
