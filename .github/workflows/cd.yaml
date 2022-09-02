@@ -42,14 +42,14 @@ jobs:
           kustomize edit set image pedroschmid2311/echo=${{ secrets.DOCKER_REPOSITORY }}:${{ github.sha }}
           cat kustomization.yaml
 
-      - name: Commit
+      - name: Commit changes
         run: |
-          DOCKER_IMAGE_TAG=${{ secrets.DOCKER_REPOSITORY }}
           git config --local user.name "Github Actions"
           git config --local user.email "action@github.com"
-          git commit -am 'Change docker image tag to $DOCKER_IMAGE_TAG'
+          DOCKER_IMAGE_TAG=${{ secrets.DOCKER_REPOSITORY }}
+          git commit -am "Change docker image tag to $DOCKER_IMAGE_TAG"
 
-      - name: Push
+      - name: Push to repository
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
