@@ -3,8 +3,6 @@ kind: Application
 metadata:
   name: prometheus
   namespace: argocd
-  # annotations:
-    # argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
 spec:
   project: default
   source:
@@ -12,22 +10,14 @@ spec:
     targetRevision: "15.8.5"
     chart: prometheus
     helm:
-      values: |
-        server:
-          global:
-            scrape_interval: 10s
-          ingress:
-            enabled: true
-            ingressClassName: kong
-            hosts:
-            - prometheus.local
+      valueFiles:
+        - resources/prometheus/values.yaml
   destination:
     server: https://kubernetes.default.svc
     namespace: monitoring
   syncPolicy:
     syncOptions:
       - CreateNamespace=true
-      # - ApplyOutOfSyncOnly=true
     automated:
       prune: true
       allowEmpty: true

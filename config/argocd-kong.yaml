@@ -3,8 +3,6 @@ kind: Application
 metadata:
   name: kong
   namespace: argocd
-  # annotations:
-    # argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
 spec:
   project: default
   source:
@@ -16,17 +14,14 @@ spec:
       - name: "ingressController.installCRDs"
         value: "false"
         forceString: true # ensures that value is treated as a string
-      values: |
-        podAnnotations:
-          prometheus.io/scrape: "true" # Ask Prometheus to scrape Kong pods for metrics
-          prometheus.io/port: "8100"
+      valueFiles:
+        - resources/kong/values.yaml
   destination:
     server: https://kubernetes.default.svc
     namespace: kong
   syncPolicy:
     syncOptions:
       - CreateNamespace=true
-      # - ApplyOutOfSyncOnly=true
     automated:
       prune: true
       allowEmpty: true
