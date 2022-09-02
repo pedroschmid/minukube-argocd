@@ -1,13 +1,16 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-  - service.yaml
-  - deployment.yaml
-  - ingress.yaml
+- service.yaml
+- deployment.yaml
+- ingress.yaml
 
 namespace: echo
 
 images:
-  - name: pedroschmid2311/echo
-    newName: pedroschmid2311/echo
-    newTag: v1
+- name: echo
+  newName: pedroschmid2311/echo
+  newTag: fd78384f63837442815bff6273d9ebf81e6c5d88
+- name: pedroschmid2311/echo
+  newName: pedroschmid2311/echo
+  newTag: v1
