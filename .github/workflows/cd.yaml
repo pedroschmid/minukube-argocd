@@ -34,7 +34,7 @@ jobs:
       - name: Kustomize
         uses: imranismail/setup-kustomize@v1
         with:
-          kustomize_version: v3.6.1
+          kustomize-version: v3.6.1
 
       - name: Update kustomization image tag
         run: |
