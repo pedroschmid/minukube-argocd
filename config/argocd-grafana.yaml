@@ -13,9 +13,9 @@ spec:
     chart: grafana
     helm:
       parameters:
-      - name: "adminPassword"
-        value: "admin"
-        forceString: true # ensures that value is treated as a string
+        - name: "adminPassword"
+          value: "admin"
+          forceString: true # ensures that value is treated as a string
       values: |
         persistence:
           enabled: true  # enable persistence using Persistent Volumes
@@ -32,38 +32,43 @@ spec:
           dashboardproviders.yaml:
             apiVersion: 1
             providers:
-              - name: 'default'
+              - name: 'Kubernetes Dashboards'
                 orgId: 1
                 folder: ''
                 type: file
-                disableDeletion: false
+                disableDeletion: true
                 editable: true
                 options:
-                  path: /var/lib/grafana/dashboards/default
+                  path: /var/lib/grafana/dashboards/kubernetes
+            providers:
+              - name: 'Kong Dashboards'
+                orgId: 1
+                folder: ''
+                type: file
+                disableDeletion: true
+                editable: true
+                options:
+                  path: /var/lib/grafana/dashboards/kong
         dashboards:
-          default:
+          kubernetes:
             cluster-monitoring-for-kubernetes: # https://grafana.com/grafana/dashboards/10000-kubernetes-cluster-monitoring-via-prometheus/
               gnetId: 10000
               revision: 1
               datasource: Prometheus
-
             node-exporter-full: # https://grafana.com/grafana/dashboards/1860-node-exporter-full/
                 gnetId: 1860
                 revision: 27
                 datasource: Prometheus
-
             kubernetes-app-metrics: # https://grafana.com/grafana/dashboards/1471-kubernetes-apps/
                 gnetId: 1471
                 revision: 27
                 datasource: Prometheus
-
             kubernetes-pod-metrics: # https://grafana.com/grafana/dashboards/747-pod-metrics/
                 gnetId: 747
                 revision: 2
-                datasource: Prometheus
-          
-            kong:
-              kong-dash:
+                datasource: Prometheus  
+          kong:  
+            kong-dash:
                 gnetId: 7424 # https://grafana.com/dashboards/7424
                 revision: 7    
                 datasource: Prometheus
