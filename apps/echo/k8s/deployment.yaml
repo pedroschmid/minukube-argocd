@@ -13,7 +13,8 @@ spec:
         app: echo
     spec:
       containers:
-      - image: pedroschmid2311/echo
-        name: echo
+      - name: echo
+        image: pedroschmid2311/echo
         ports:
-        - containerPort: 80
+        - containerPort: 3000
+          protocol: TCP
