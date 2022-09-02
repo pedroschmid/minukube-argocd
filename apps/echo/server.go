@@ -15,7 +15,7 @@ type ResponseType struct {
 func main() {
 	e := echo.New()
 
-	e.GET("/version", func(c echo.Context) error {
+	e.GET("/", func(c echo.Context) error {
 		response := &ResponseType{
 			Status: http.StatusOK,
 			Message: "Showing version",
