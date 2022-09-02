@@ -5,9 +5,9 @@ metadata:
   labels:
     app: echo
   annotations:
-    konghq.com/plugins: rate-limiting
+    # konghq.com/plugins: rate-limiting
     # konghq.com/host-aliases: "example.com,example.net"
-    konghq.com/methods: "GET"
+    # konghq.com/methods: "GET"
     # konghq.com/https-redirect-status-code: "301"
     # konghq.com/host-header: "test.example.com"
 spec:
@@ -16,7 +16,7 @@ spec:
     - http:
         paths:
         - path: /echo
-          pathType: Prefix
+          pathType: ImplementationSpecific
           backend:
             service:
               name: echo-service
