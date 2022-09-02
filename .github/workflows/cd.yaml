@@ -4,8 +4,8 @@ on:
     branches: 
       - 'master'
 jobs:
-  docker:
-    name: Build
+  build:
+    name: Docker Build
     runs-on: ubuntu-latest
     steps:
       - name: Checkout source code
@@ -23,3 +23,34 @@ jobs:
           context: ./apps/echo
           push: true
           tags: ${{ secrets.DOCKER_REPOSITORY }}:${{ github.sha }}, ${{ secrets.DOCKER_REPOSITORY }}:latest
+  deploy:
+    name: Deploy to ArgoCD
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v3
+
+      - name: Kustomize
+        uses: imranismail/setup-kustomize@v1
+        with:
+          kustomize_version: v3.6.1
+
+      - name: Update kustomization image tag
+        run: |
+          cd apps/echo/k8s
+          kustomize edit set image echo=${{ secrets.DOCKER_REPOSITORY }}:${{ github.sha }}
+          cat kustomization.yaml
+
+      - name: Commit
+        run: |
+          DOCKER_IMAGE_TAG=${{ secrets.DOCKER_REPOSITORY }}
+          git config --local user.name "Github Actions"
+          git config --local user.email "action@github.com"
+          git commit -am 'Change docker image tag to $DOCKER_IMAGE_TAG'
+
+      - name: Push
+        uses: ad-m/github-push-actions@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref }}
