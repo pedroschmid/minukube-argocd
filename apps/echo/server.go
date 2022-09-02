@@ -18,6 +18,7 @@ func main() {
 	e.GET("/version", func(c echo.Context) error {
 		response := &ResponseType{
 			Status: http.StatusOK,
+			Message: "Showing version"
 			Data:   "v1",
 		}
 
