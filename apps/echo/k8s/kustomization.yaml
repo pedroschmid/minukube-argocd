@@ -10,4 +10,4 @@ namespace: echo
 images:
 - name: pedroschmid2311/echo
   newName: pedroschmid2311/echo
-  newTag: 6fc731253395733cbea45eb007fc9e905fa3ca7b
+  newTag: 67170c74b83fc6d8b773353d70db6107343b50ec
