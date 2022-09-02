@@ -13,12 +13,12 @@ metadata:
 spec:
   ingressClassName: kong
   rules:
-    http:
-      paths:
-      - path: /echo
-        pathType: Prefix
-        backend:
-          service:
-            name: echo-service
-            port:
-              number: 80
+    - http:
+        paths:
+        - path: /echo
+          pathType: Prefix
+          backend:
+            service:
+              name: echo-service
+              port:
+                number: 80
