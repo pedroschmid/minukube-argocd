@@ -1,17 +1,17 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: httpbin
+  name: echo
   namespace: argocd
 spec:
   project: default
   source:
-    repoURL: https://github.com/arthurbdiniz/kind-kong.git
+    repoURL: https://github.com/pedroschmid/minukube-argocd
     targetRevision: HEAD
     path: apps/echo/k8s
   destination:
     server: https://kubernetes.default.svc
-    namespace: httpbin
+    namespace: echo
   syncPolicy:
     syncOptions:
       - CreateNamespace=true
