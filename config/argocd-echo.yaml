@@ -12,9 +12,9 @@ spec:
   destination:
     server: https://kubernetes.default.svc
     namespace: echo
-  syncPolicy:
-    syncOptions:
-      - CreateNamespace=true
+  # syncPolicy:
+  #   syncOptions:
+  #     - CreateNamespace=true
     # automated:
     #   prune: true
     #   allowEmpty: true
