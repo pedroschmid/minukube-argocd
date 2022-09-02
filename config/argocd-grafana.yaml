@@ -32,25 +32,16 @@ spec:
           dashboardproviders.yaml:
             apiVersion: 1
             providers:
-              - name: 'Kubernetes Dashboards'
+              - name: 'Infrastructure Dashboards'
                 orgId: 1
-                folder: ''
+                folder: 'DevOps'
                 type: file
                 disableDeletion: true
                 editable: true
                 options:
-                  path: /var/lib/grafana/dashboards/kubernetes
-            providers:
-              - name: 'Kong Dashboards'
-                orgId: 1
-                folder: ''
-                type: file
-                disableDeletion: true
-                editable: true
-                options:
-                  path: /var/lib/grafana/dashboards/kong
+                  path: /var/lib/grafana/dashboards/default
         dashboards:
-          kubernetes:
+          default:
             cluster-monitoring-for-kubernetes: # https://grafana.com/grafana/dashboards/10000-kubernetes-cluster-monitoring-via-prometheus/
               gnetId: 10000
               revision: 1
@@ -66,10 +57,8 @@ spec:
             kubernetes-pod-metrics: # https://grafana.com/grafana/dashboards/747-pod-metrics/
                 gnetId: 747
                 revision: 2
-                datasource: Prometheus  
-          kong:  
-            kong-dash:
-                gnetId: 7424 # https://grafana.com/dashboards/7424
+            kong-dash: # https://grafana.com/grafana/dashboards/7424-kong-official/
+                gnetId: 7424 
                 revision: 7    
                 datasource: Prometheus
             
