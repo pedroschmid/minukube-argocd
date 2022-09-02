@@ -8,9 +8,6 @@ resources:
 namespace: echo
 
 images:
-- name: echo
-  newName: pedroschmid2311/echo
-  newTag: fd78384f63837442815bff6273d9ebf81e6c5d88
 - name: pedroschmid2311/echo
   newName: pedroschmid2311/echo
-  newTag: v1
+  newTag: latest

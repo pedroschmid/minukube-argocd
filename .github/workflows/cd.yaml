@@ -39,7 +39,7 @@ jobs:
       - name: Update kustomization image tag
         run: |
           cd apps/echo/k8s
-          kustomize edit set image echo=${{ secrets.DOCKER_REPOSITORY }}:${{ github.sha }}
+          kustomize edit set image pedroschmid2311/echo=${{ secrets.DOCKER_REPOSITORY }}:${{ github.sha }}
           cat kustomization.yaml
 
       - name: Commit
