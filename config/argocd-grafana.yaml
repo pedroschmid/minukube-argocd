@@ -42,10 +42,32 @@ spec:
                   path: /var/lib/grafana/dashboards/default
         dashboards:
           default:
-            kong-dash:
-              gnetId: 7424  # Install the following Grafana dashboard in the
-              revision: 7   # instance: https://grafana.com/dashboards/7424
+            cluster-monitoring-for-kubernetes: # https://grafana.com/grafana/dashboards/10000-kubernetes-cluster-monitoring-via-prometheus/
+              gnetId: 10000
+              revision: 1
               datasource: Prometheus
+
+            node-exporter-full: # https://grafana.com/grafana/dashboards/1860-node-exporter-full/
+                gnetId: 1860
+                revision: 27
+                datasource: Prometheus
+
+            kubernetes-app-metrics: # https://grafana.com/grafana/dashboards/1471-kubernetes-apps/
+                gnetId: 1471
+                revision: 27
+                datasource: Prometheus
+
+            kubernetes-pod-metrics: # https://grafana.com/grafana/dashboards/747-pod-metrics/
+                gnetId: 747
+                revision: 2
+                datasource: Prometheus
+          
+            kong:
+              kong-dash:
+                gnetId: 7424 # https://grafana.com/dashboards/7424
+                revision: 7    
+                datasource: Prometheus
+            
         ingress:
           enabled: true
           ingressClassName: kong
