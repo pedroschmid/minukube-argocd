@@ -16,7 +16,7 @@ spec:
   - host: "echo.local"
     http:
       paths:
-      - path: /api
+      - path: /
         pathType: Prefix
         backend:
           service:
