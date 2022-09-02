@@ -16,5 +16,5 @@ kubectl -n argocd patch deployment argo-cd-argocd-server --type json \
 # Deploy kong prometheus plugin
 kubectl apply -f resource/plugins/kong/prometheus.yaml
 
-# Deploy kong rate limiting plugin on foo-bar namespace
-kubectl apply -n foo-bar -f resource/plugins/kong/rate-limiting.yaml
+# Deploy kong rate limiting plugin on echo namespace
+kubectl apply -n echo -f resource/plugins/kong/rate-limiting.yaml
