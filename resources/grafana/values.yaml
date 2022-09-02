@@ -1,0 +1,53 @@
+persistence:
+  enabled: true
+datasources:
+  datasources.yaml:
+    apiVersion: 1
+    datasources:
+      - name: Prometheus
+        type: prometheus
+        url: http://prometheus-server
+        access: proxy
+        isDefault: true
+dashboardProviders:
+  dashboardproviders.yaml:
+    apiVersion: 1
+    providers:
+      - name: "Devops Dashboards"
+        orgId: 1
+        folder: "DevOps Dashboards"
+        type: file
+        disableDeletion: true
+        editable: true
+        options:
+          path: /var/lib/grafana/dashboards/default
+dashboards:
+  default:
+    cluster-monitoring-for-kubernetes: # https://grafana.com/grafana/dashboards/10000-kubernetes-cluster-monitoring-via-prometheus/
+      gnetId: 10000
+      revision: 1
+      datasource: Prometheus
+    node-exporter-full: # https://grafana.com/grafana/dashboards/1860-node-exporter-full/
+      gnetId: 1860
+      revision: 27
+      datasource: Prometheus
+    kubernetes-app-metrics: # https://grafana.com/grafana/dashboards/1471-kubernetes-apps/
+      gnetId: 1471
+      revision: 27
+      datasource: Prometheus
+    kubernetes-pod-metrics: # https://grafana.com/grafana/dashboards/747-pod-metrics/
+      gnetId: 747
+      revision: 2
+      datasource: Prometheus
+    kong-dash: # https://grafana.com/grafana/dashboards/7424-kong-official/
+      gnetId: 7424
+      revision: 7
+      datasource: Prometheus
+ingress:
+  enabled: true
+  ingressClassName: kong
+  hosts:
+    - "grafana.local"
+grafana.ini:
+  server:
+    domain: grafana.local
