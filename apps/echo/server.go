@@ -19,7 +19,7 @@ func main() {
 		response := &ResponseType{
 			Status: http.StatusOK,
 			Message: "Showing version",
-			Data:   "v1.0",
+			Data:   "v1.1",
 		}
 
 		c.Response().Header().Set(echo.HeaderContentType, echo.MIMEApplicationJSONCharsetUTF8)
