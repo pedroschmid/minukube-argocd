@@ -57,6 +57,7 @@ spec:
             kubernetes-pod-metrics: # https://grafana.com/grafana/dashboards/747-pod-metrics/
                 gnetId: 747
                 revision: 2
+                datasource: Prometheus
             kong-dash: # https://grafana.com/grafana/dashboards/7424-kong-official/
                 gnetId: 7424 
                 revision: 7    
