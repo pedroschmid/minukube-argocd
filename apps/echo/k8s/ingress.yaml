@@ -13,10 +13,9 @@ metadata:
 spec:
   ingressClassName: kong
   rules:
-  - host: "echo.local"
     http:
       paths:
-      - path: /
+      - path: /echo
         pathType: Prefix
         backend:
           service:
