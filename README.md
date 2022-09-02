@@ -1,4 +1,4 @@
-![ArgoCD](https://i0.wp.com/rodrigolira.eti.br/wp-content/uploads/2022/03/argoprojio-ar21.png?fit=1200%2C600&ssl=1)
+![ArgoCD](https://www.patrickdap.com/img/argocd/argo_huda63aa76ee63205bdba3ffd8e9d948cb_49495_250x0_resize_q85_box_3.png)
 # ArgoCD 
 
 ### Install ArgoCD using Helm
