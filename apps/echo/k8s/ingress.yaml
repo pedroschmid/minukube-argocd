@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: echo-ingress
+  labels:
+    app: echo
+  annotations:
+    konghq.com/plugins: rate-limiting
+    # konghq.com/host-aliases: "example.com,example.net"
+    konghq.com/methods: "GET"
+    # konghq.com/https-redirect-status-code: "301"
+    # konghq.com/host-header: "test.example.com"
+spec:
+  ingressClassName: kong
+  rules:
+  - host: "echo.local"
+    http:
+      paths:
+      - path: /api
+        pathType: Prefix
+        backend:
+          service:
+            name: echo-service
+            port:
+              number: 80
